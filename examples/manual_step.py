@@ -16,9 +16,9 @@ for z in [0.0, 1.0, -1.0, 0.5, -0.5]:
     S1 = gbm.step(np.array([S0]), dt, np.array([z]))[0]
     print(f'z={z:+.1f} -> S1={S1:.4f}')
 
-    #3. random shock from standard normal
-    rng = np.random.default_rng(42)
-    Z = rng.standard_normal(5) # 5 random draws ~ N(0,1)
-    S1s = gbm.step(np.full(5, S0), dt, Z)
-    print('Random z:', np.round(Z, 3))
-    print('Random step S1:', np.round(S1s, 4))
+#3. random shock from standard normal
+rng = np.random.default_rng(42)
+Z = rng.standard_normal(5) # 5 random draws ~ N(0,1)
+S1s = gbm.step(np.full(5, S0), dt, Z)
+print('Random z:', np.round(Z, 3))
+print('Random step S1:', np.round(S1s, 4))
