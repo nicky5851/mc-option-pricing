@@ -27,4 +27,21 @@ def simulate_one_path(model: GBM,
     return prices
 
 
-    
+def simulate_paths(model: GBM,
+                   s0: float,
+                   T: float,
+                   steps: int,
+                   n_paths: int,
+                   rng: np.random.Generator) -> np.ndarray:
+    """
+    Simulate many GBM price paths.
+    Return an array with shapr (n_paths, steps+1):
+    each row = one path.
+    """
+    paths = np.empty((n_paths, steps + 1), dtype=float)
+
+    for i in range(n_paths):
+        paths[i] = simulate_one_path(model, s0, T, steps, rng)
+
+    return paths
+
